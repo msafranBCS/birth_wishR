@@ -129,7 +129,22 @@ h2{
 }
 </style>
 </head>
+<audio id="bgMusic" autoplay loop>
+    <source src="09-Bus-Love-Pt-2-MassTamilan.com.mp3" type="audio/mpeg">
+</audio>
 <body>
+
+  <script>
+window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
+
+    music.play().catch(() => {
+        document.body.addEventListener("click", () => {
+            music.play();
+        }, { once: true });
+    });
+});
+</script>
 
 <!-- Floating Hearts -->
 <div class="hearts">
