@@ -71,6 +71,16 @@ html,body{
   width:100%;
   height:100%;
   object-fit:cover;
+  animation: zoomEffect 5s ease-in-out infinite;
+}
+
+@keyframes zoomEffect{
+  0%,100%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.08);
+  }
 }
 
 .p9{
@@ -83,52 +93,58 @@ html,body{
 
 
 /* ==== 10 Image Positions ==== */
-.p1{top:0%; left:-15%; }
-.p2{top:5%; left:19%; }
-.p3{top:-1%; left:54%; }
-.p4{top:17%; right:-4%; }
-.p5{top:35%; left:-10%; }
-.p6{top:40%; right:-10%; }
-.p7{bottom:5%; left:-18%; }
-.p8{bottom:3%; right:-15%; }
-.p9{bottom:-9%; left:15%; }
-.p10{bottom:12%; right:25%; }
+.p1{top:0%; left:-15%; transform: rotate(12deg);}
+.p2{top:5%; left:19%; transform: rotate(-8deg); }
+.p3{top:-1%; left:54%; transform: rotate(15deg); }
+.p4{top:17%; right:-4%; transform: rotate(22deg);}
+.p5{top:35%; left:-10%; transform: rotate(-6deg);}
+.p6{top:40%; right:-10%; transform: rotate(-12deg);}
+.p7{bottom:5%; left:-18%; transform: rotate(8deg);}
+.p8{bottom:3%; right:-15%; transform: rotate(25deg);}
+.p9{bottom:-9%; left:15%; transform: rotate(-8deg);}
+.p10{bottom:12%; right:25%; transform: rotate(-4deg);}
 
 
-/* ===== Floating Photo Animation ===== */
+/* Images always moving */
 
 .photo{
-  animation: photoFloat 4s ease-in-out infinite;
-  transform-origin: center center;
+  animation: floatingPhoto 3.5s ease-in-out infinite;
+  transform-origin:center;
 }
 
 .p1{animation-delay:0s;}
-.p2{animation-delay:.4s;}
-.p3{animation-delay:.8s;}
-.p4{animation-delay:1.2s;}
-.p5{animation-delay:1.6s;}
-.p6{animation-delay:2s;}
-.p7{animation-delay:2.4s;}
-.p8{animation-delay:2.8s;}
-.p9{animation-delay:3.2s;}
-.p10{animation-delay:3.6s;}
+.p2{animation-delay:.2s;}
+.p3{animation-delay:.4s;}
+.p4{animation-delay:.6s;}
+.p5{animation-delay:.8s;}
+.p6{animation-delay:1s;}
+.p7{animation-delay:1.2s;}
+.p8{animation-delay:1.4s;}
+.p9{animation-delay:1.6s;}
+.p10{animation-delay:1.8s;}
 
-@keyframes photoFloat{
+@keyframes floatingPhoto{
+
   0%{
-    transform: translateY(0px) rotate(0deg);
+    translate:0px 0px;
   }
+
   25%{
-    transform: translateY(-8px) rotate(1.5deg);
+    translate:0px -8px;
   }
+
   50%{
-    transform: translateY(0px) rotate(0deg);
+    translate:5px 0px;
   }
+
   75%{
-    transform: translateY(8px) rotate(-1.5deg);
+    translate:0px 8px;
   }
+
   100%{
-    transform: translateY(0px) rotate(0deg);
+    translate:0px 0px;
   }
+
 }
 
 
