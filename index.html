@@ -2,252 +2,294 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday 🤍</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Relationship Quiz 💕</title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  height:100%;
-  overflow:hidden;
-  background: linear-gradient(135deg, #ea8898, #e0b0c4);
-  font-family:'Poppins',sans-serif;
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9eb5,#ffd6df);
+    font-family:Poppins,sans-serif;
 }
 
-/* 🎆 Fireworks canvas */
-#fireworks{
+.quiz-box{
+    width:95%;
+    max-width:600px;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    text-align:center;
+}
+
+h2{
+    color:#ff2d75;
+    margin-bottom:25px;
+}
+
+.option{
+    width:100%;
+    margin:10px 0;
+}
+
+.progress{
+    height:12px;
+    margin-bottom:20px;
+}
+
+
+/* ================= HEART ANIMATION ================= */
+
+.hearts{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  z-index:1;
+  overflow:hidden;
   pointer-events:none;
 }
 
-.center-box{
-  position:relative;
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  z-index:2;
-}
-
-/* ==== CENTER TEXT ==== */
-.title{
-  z-index:5;
-}
-.title h1{
-  font-family:'Great Vibes', cursive;
-  font-size:2.2rem;
-  color:#ff0055;
-}
-.title p{
-  font-size:0.9rem;
-  letter-spacing:2px;
-  color:#555;
-  margin-top:5px;
-}
-
-/* ==== FLOATING IMAGE BOXES ==== */
-.photo{
+.hearts span{
   position:absolute;
-  width:170px;
-  height:180px;
-  border-radius:0px;
-  overflow:hidden;
-  box-shadow:0 6px 15px rgba(0,0,0,0.15);
-  border:2px solid #fff;
-  border-width: 8px 8px 23px 8px;
-}
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  bottom:-50px;
+  font-size:24px;
+  animation:floatHeart 10s linear infinite;
 }
 
-.p9{
-  bottom:-5%;
-  left:15%;
-  transform: rotate(-8deg);
-  z-index:9;
-}
+.hearts span:nth-child(1){left:10%;animation-duration:8s;}
+.hearts span:nth-child(2){left:20%;animation-duration:12s;}
+.hearts span:nth-child(3){left:35%;animation-duration:9s;}
+.hearts span:nth-child(4){left:50%;animation-duration:13s;}
+.hearts span:nth-child(5){left:65%;animation-duration:10s;}
+.hearts span:nth-child(6){left:75%;animation-duration:8s;}
+.hearts span:nth-child(7){left:85%;animation-duration:12s;}
+.hearts span:nth-child(8){left:95%;animation-duration:9s;}
 
-
-
-/* ==== 10 Image Positions ==== */
-.p1{top:0%; left:-15%; }
-.p2{top:5%; left:19%; }
-.p3{top:-1%; left:54%; }
-.p4{top:17%; right:-4%; }
-.p5{top:35%; left:-10%; }
-.p6{top:40%; right:-10%; }
-.p7{bottom:5%; left:-18%; }
-.p8{bottom:3%; right:-15%; }
-.p9{bottom:-9%; left:15%; }
-.p10{bottom:12%; right:25%; }
-
-
-/* ===== Floating Photo Animation ===== */
-
-.photo{
-  animation: photoFloat 4s ease-in-out infinite;
-  transform-origin: center center;
-}
-
-.p1{animation-delay:0s;}
-.p2{animation-delay:.4s;}
-.p3{animation-delay:.8s;}
-.p4{animation-delay:1.2s;}
-.p5{animation-delay:1.6s;}
-.p6{animation-delay:2s;}
-.p7{animation-delay:2.4s;}
-.p8{animation-delay:2.8s;}
-.p9{animation-delay:3.2s;}
-.p10{animation-delay:3.6s;}
-
-@keyframes photoFloat{
+@keyframes floatHeart{
   0%{
-    transform: translateY(0px) rotate(0deg);
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
   }
-  25%{
-    transform: translateY(-8px) rotate(1.5deg);
+
+  20%{
+    opacity:1;
   }
-  50%{
-    transform: translateY(0px) rotate(0deg);
-  }
-  75%{
-    transform: translateY(8px) rotate(-1.5deg);
-  }
+
   100%{
-    transform: translateY(0px) rotate(0deg);
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
   }
 }
 
+/* ================= SURPRISE UNLOCK ================= */
 
-
-
-/* ==== FOOTER ==== */
-.footer{
-  position:absolute;
-  bottom:20px;
-  width:200px;
-  text-align:center;
-  font-size:0.85rem;
-  color:#555;
-  background-color:#fff;
-  border:1px solid #000;
-  z-index:999;
+#unlockScreen{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#ff6fa5,#ffc7d9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
 }
 
-@media(min-width:768px){
-  .photo{width:70px;height:70px;}
-  .title h1{font-size:3rem;}
+.unlock-box{
+  text-align:center;
+  color:white;
+}
+
+.unlock-box h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.unlock-box p{
+  font-size:1.2rem;
+}
+
+.heart-loader{
+  font-size:60px;
+  animation:pulseHeart 1s infinite;
+}
+
+@keyframes pulseHeart{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.4);}
+  100%{transform:scale(1);}
 }
 </style>
 </head>
-<audio id="bgMusic" autoplay loop>
-    <source src="09-Bus-Love-Pt-2-MassTamilan.com.mp3" type="audio/mpeg">
-</audio>
 <body>
-  
-<script>
-window.addEventListener("load", () => {
-    const music = document.getElementById("bgMusic");
 
-    music.play().catch(() => {
-        document.body.addEventListener("click", () => {
-            music.play();
-        }, { once: true });
-    });
-});
-</script>
+<!-- Floating Hearts -->
+<div class="hearts">
+  <span>❤️</span>
+  <span>💕</span>
+  <span>💖</span>
+  <span>💗</span>
+  <span>💞</span>
+  <span>❤️</span>
+  <span>💕</span>
+  <span>💖</span>
+</div>
+
+<!-- Unlock Screen -->
+<div id="unlockScreen">
+    <div class="unlock-box">
+        <h1>💝 Surprise Unlocked 💝</h1>
+        <p>You answered all questions correctly!</p>
+        <div class="heart-loader">❤️</div>
+    </div>
+</div>
 
 
+<div class="quiz-box">
 
-<!-- 🎆 Fireworks Canvas -->
-<canvas id="fireworks"></canvas>
+    <div class="progress">
+        <div id="bar" class="progress-bar bg-danger" style="width:10%"></div>
+    </div>
 
-<div class="center-box">
+    <h2 id="question"></h2>
 
-  <!-- 10 Images -->
-  <div class="photo p1"><img src="Ruksha/1.jpg"></div>
-  <div class="photo p2"><img src="Ruksha/2.jpg"></div>
-  <div class="photo p3"><img src="Ruksha/3.jpg"></div>
-  <div class="photo p4"><img src="Ruksha/4.jpg"></div>
-  <div class="photo p5"><img src="Ruksha/5.jpg"></div>
-  <div class="photo p6"><img src="Ruksha/6.jpg"></div>
-  <div class="photo p7"><img src="Ruksha/7.jpg"></div>
-  <div class="photo p8"><img src="Ruksha/8.jpg"></div>
-  <div class="photo p9"><img src="Ruksha/9.jpg"></div>
-  <div class="photo p10"><img src="Ruksha/10.jpg"></div>
-
-  <!-- Center Text -->
-  <div class="title">
-    <h1>Happy <br>Birthday 💕</h1>
-    <p>DEAR <strong>HONEY</strong></p>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    With love 💖 <strong>Safran</strong>
-  </div>
+    <div id="answers"></div>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-/* 🎆 Fireworks JS */
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
 
-function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+const questions = [
+
+{
+q:"Where did we first meet? 💕",
+a:["School","Instagram","College","Park"],
+c:"Instagram"
+},
+
+{
+q:"What is my favorite color? 🎨",
+a:["Blue","Black","Pink","White"],
+c:"Black"
+},
+
+{
+q:"What nickname do I call you? 😘",
+a:["Honey","Baby","Sweetie","Love"],
+c:"Honey"
+},
+
+{
+q:"What food do I love most? 🍕",
+a:["Pizza","Burger","Kottu","Rice"],
+c:"Pizza"
+},
+
+{
+q:"Which month did we start talking? 📅",
+a:["January","March","July","December"],
+c:"July"
+},
+
+{
+q:"Who says sorry first? 😂",
+a:["Me","You","Nobody","Both"],
+c:"Me"
+},
+
+{
+q:"What is our favorite memory? ❤️",
+a:["First Chat","First Call","First Meet","All"],
+c:"All"
+},
+
+{
+q:"What do I call you most often? 😍",
+a:["Honey","Cutie","Princess","Baby"],
+c:"Honey"
+},
+
+{
+q:"Who is the cutest? 😁",
+a:["You","Me","Both","Nobody"],
+c:"You"
+},
+
+{
+q:"Who loves more? 💖",
+a:["Me","You","Equal","Secret"],
+c:"Me"
 }
-resize();
-window.addEventListener("resize", resize);
 
-let particles = [];
+];
 
-function createFirework(){
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * canvas.height * 0.6;
-  const count = 50;
+let current=0;
 
-  for(let i=0;i<count;i++){
-    particles.push({
-      x,y,
-      angle:Math.random()*Math.PI*2,
-      speed:Math.random()*4+2,
-      life:80
-    });
-  }
+function loadQuestion(){
+
+document.getElementById("question").innerText=
+questions[current].q;
+
+document.getElementById("bar").style.width=
+((current+1)/questions.length)*100+"%";
+
+let html="";
+
+questions[current].a.forEach(ans=>{
+
+html+=`
+<button class="btn btn-outline-danger option"
+onclick="checkAnswer('${ans}')">
+${ans}
+</button>
+`;
+
+});
+
+document.getElementById("answers").innerHTML=html;
 }
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach((p,i)=>{
-    p.x += Math.cos(p.angle)*p.speed;
-    p.y += Math.sin(p.angle)*p.speed;
-    p.life--;
-    ctx.fillStyle="rgba(255,255,255,0.8)";
-    ctx.fillRect(p.x,p.y,2,2);
-    if(p.life<=0) particles.splice(i,1);
-  });
-  requestAnimationFrame(animate);
+function checkAnswer(ans){
+
+if(ans===questions[current].c){
+
+current++;
+
+if(current===questions.length){
+
+document.getElementById("unlockScreen").style.display="flex";
+
+setTimeout(()=>{
+
+window.location.href="birthday.html";
+
+},4000);
+
+}else{
+
+loadQuestion();
+
 }
 
-setInterval(createFirework,1500);
-animate();
+}else{
+
+alert("❌ Wrong Answer Babe! Try Again 😘");
+
+}
+
+}
+
+
+loadQuestion();
+
 </script>
 
 </body>
