@@ -85,6 +85,46 @@ html,body{
 .p9{bottom:-5%; left:15%; transform: rotate(-8deg);}
 .p10{bottom:12%; right:25%; transform: rotate(-4deg);}
 
+
+/* ===== Floating Photo Animation ===== */
+
+.photo{
+  animation: photoFloat 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.p1{animation-delay:0s;}
+.p2{animation-delay:.4s;}
+.p3{animation-delay:.8s;}
+.p4{animation-delay:1.2s;}
+.p5{animation-delay:1.6s;}
+.p6{animation-delay:2s;}
+.p7{animation-delay:2.4s;}
+.p8{animation-delay:2.8s;}
+.p9{animation-delay:3.2s;}
+.p10{animation-delay:3.6s;}
+
+@keyframes photoFloat{
+  0%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  25%{
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+  50%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  75%{
+    transform: translateY(8px) rotate(-1.5deg);
+  }
+  100%{
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+
+
+
 /* ==== FOOTER ==== */
 .footer{
   position:absolute;
